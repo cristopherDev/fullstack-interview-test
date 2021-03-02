@@ -49,3 +49,15 @@ We also care about being able to run your test without significant effort on our
 - Your code has tests.
 
 If you come across any questions or anything we didn't cover on this README, feel free to reach out to us and we'll get you an answer as soon as possible. Happy coding!
+
+## Instructions
+
+- technological dependencies: nodejs [ver.12.x]
+
+### Install dependencies (modules)
+- open a terminal and type: npm i
+
+### Scripts options
+- run dev mode: npm run dev [need nodemon]
+- run test: npm test
+- star project: npm run start
