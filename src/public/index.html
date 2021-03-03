@@ -5,40 +5,67 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fullstack interview test</title>
-    <link rel="stylesheet" href="styles/styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles/customization.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
 </head>
 <body>
     <div id="app">
-        <div class="navbar">
-                <span>Git / Fullstack interview test</span>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <span class="navbar-brand mb-0 h1">Git / Fullstack interview test</span>
+            </div>
+        </nav>
 
-                <div class="navbar-links">
-                    <a href="/branches">Branches</a>
-                    <a href="/prs">PRs</a>
+        <div class="container-fluid container-padding">
+            <div class="row justify-content-between">
+                <div class="col-4">
+                    <div v-if="repoInfo.length">
+                        <a v-bind:href="repoInfo[0].html_url">{{ repoInfo[0].full_name }}</a>
+                        <b>current branch: {{ currentBranch }}</b>
+                    </div>
+                    <div v-else>
+                        <p>Loading info...</p>
+                    </div>
                 </div>
+                <div class="col-2">
+                    <div class="dropdown">
+                        <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Branches
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <div v-if="listBranches.length">
+                                <li v-for="branch in listBranches">
+                                    <a class="dropdown-item" v-on:click="getCommits(branch.commit.url)">
+                                        {{ branch.name }}
+                                    </a>
+                                </li>
+                            </div>
+                            <div v-else>
+                                <li>
+                                    <a class="dropdown-item">
+                                        Loading branches...
+                                    </a>
+                                </li>
+                            </div>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div>
-            <div v-if="repoInfo.length">
-                <p>user / repo: {{ repoInfo[0].full_name }}</p>
-            </div>
-            <div v-else>
-                <p>Loading info...</p>
-            </div>
-        </div>
-        <div>
-            <div v-if="repoInfo.length">
-                <p>url: {{ repoInfo[0].html_url }}</p>
-            </div>
-            <div v-else>
-                <p>Loading url repo...</p>
+        <div class="container-fluid container-padding-commits">
+            <div class="row justify-content-md-center">
+                <div class="col col-lg-8">
+                    <div class="alert alert-primary" role="alert">
+                        To display comments please select a branch
+                    </div>
+                </div>
             </div>
         </div>
-    
-        <div class="footer">
-            <p>Coded by: Cristopher</p>
-        </div>
+        
     </div>
 
     <script src="js/app.js"></script>

@@ -60,4 +60,4 @@ If you come across any questions or anything we didn't cover on this README, fee
 ### Scripts options
 - run dev mode: npm run dev [need nodemon]
 - run test: npm test
-- star project: npm run start
+- start project: npm run start

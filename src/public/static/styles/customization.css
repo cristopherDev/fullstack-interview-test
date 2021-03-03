@@ -1,0 +1,12 @@
+html, body{
+    height:100%;
+    width:100%;
+}
+
+.container-padding {
+    padding-top: 13px;
+}
+
+.container-padding-commits {
+    padding: 60px;
+}
